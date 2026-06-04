@@ -78,6 +78,24 @@ jobs:
         with:
           ref: ${{ inputs.tag_name || github.ref }}
 
+      - name: Generate optional preset config
+        env:
+          YIBIAO_PRESET_API_KEY: ${{ secrets.YIBIAO_PRESET_API_KEY }}
+        run: |
+          if [ -z "$YIBIAO_PRESET_API_KEY" ]; then
+            echo "No preset api key provided; skip preset config."
+            exit 0
+          fi
+
+          cat > assets/preset_user_config.json <<EOF
+          {
+            "text_model_provider": "moonshot",
+            "api_key": "$YIBIAO_PRESET_API_KEY",
+            "base_url": "https://api.moonshot.cn/v1",
+            "model_name": "moonshot-v1-8k"
+          }
+          EOF
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -165,7 +183,7 @@ jobs:
 
       - name: Build Windows MSI artifact
         if: runner.os == 'Windows'
-        run: npx electron-builder --win msi --publish never -c.productName=OpenBidKit_Yibiao -c.extraMetadata.author=mark -c.copyright="Copyright (c) 2026 mark"
+        run: npx electron-builder --win msi --publish never -c.productName=宜标投标工具箱 -c.extraMetadata.author=mark -c.copyright="Copyright (c) 2026 mark"
 
       - name: Build and publish macOS artifacts
         if: runner.os == 'macOS'

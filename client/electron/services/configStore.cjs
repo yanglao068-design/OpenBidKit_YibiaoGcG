@@ -3,7 +3,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const { getConfigFilePath } = require('../utils/paths.cjs');
 
-const textModelProviders = ['jinlong', 'volcengine', 'xiaomi', 'deepseek', 'longcat', 'custom'];
+const textModelProviders = ['jinlong', 'volcengine', 'xiaomi', 'deepseek', 'longcat', 'moonshot', 'custom'];
 const imageModelProviders = ['jinlong', 'volcengine', 'google-ai-studio', 'custom'];
 const oldXiaomiBaseUrl = 'https://api.xiaomimimo.com/v1';
 
@@ -13,6 +13,7 @@ const textProviderBaseUrls = {
   xiaomi: 'https://token-plan-cn.xiaomimimo.com/v1',
   deepseek: 'https://api.deepseek.com',
   longcat: 'https://api.longcat.chat/openai/v1',
+  moonshot: 'https://api.moonshot.cn/v1',
   custom: '',
 };
 
@@ -41,6 +42,11 @@ const defaultTextModelProfiles = {
     api_key: '',
     base_url: textProviderBaseUrls.longcat,
     model_name: '',
+  },
+  moonshot: {
+    api_key: '',
+    base_url: textProviderBaseUrls.moonshot,
+    model_name: 'moonshot-v1-8k',
   },
   custom: {
     api_key: '',
@@ -224,6 +230,24 @@ function normalizeConfig(config) {
 function createConfigStore(app) {
   const configFile = getConfigFilePath(app);
 
+  function loadPresetConfig() {
+    const presetPath = path.join(app.getAppPath(), 'assets', 'preset_user_config.json');
+    if (!fs.existsSync(presetPath)) {
+      return null;
+    }
+
+    try {
+      const raw = fs.readFileSync(presetPath, 'utf-8');
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== 'object') {
+        return null;
+      }
+      return parsed;
+    } catch (error) {
+      return null;
+    }
+  }
+
   function persist(config) {
     fs.mkdirSync(path.dirname(configFile), { recursive: true });
     fs.writeFileSync(configFile, JSON.stringify(config, null, 2), 'utf-8');
@@ -248,7 +272,8 @@ function createConfigStore(app) {
 
     load() {
       if (!fs.existsSync(configFile)) {
-        const config = withAnalyticsIdentity(normalizeConfig());
+        const presetConfig = loadPresetConfig();
+        const config = withAnalyticsIdentity(normalizeConfig(presetConfig || undefined));
         persist(config);
         return config;
       }

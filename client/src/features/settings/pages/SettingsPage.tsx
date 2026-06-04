@@ -23,6 +23,7 @@ const textModelProviders: Array<{ value: TextModelProvider; label: string }> = [
   { value: 'xiaomi', label: '小米 token plan' },
   { value: 'deepseek', label: 'DeepSeek' },
   { value: 'longcat', label: '龙猫' },
+  { value: 'moonshot', label: 'Kimi（月之暗面）' },
   { value: 'custom', label: '自定义' },
 ];
 
@@ -34,6 +35,7 @@ const textProviderDefaults: TextModelProfiles = {
   xiaomi: { api_key: '', base_url: 'https://token-plan-cn.xiaomimimo.com/v1', model_name: '' },
   deepseek: { api_key: '', base_url: 'https://api.deepseek.com', model_name: '' },
   longcat: { api_key: '', base_url: 'https://api.longcat.chat/openai/v1', model_name: '' },
+  moonshot: { api_key: '', base_url: 'https://api.moonshot.cn/v1', model_name: 'moonshot-v1-8k' },
   custom: { api_key: '', base_url: '', model_name: '' },
 };
 
@@ -43,6 +45,7 @@ const textProviderApiKeyUrls: Partial<Record<TextModelProvider, string>> = {
   xiaomi: 'https://platform.xiaomimimo.com/console/api-keys',
   deepseek: 'https://platform.deepseek.com/api_keys',
   longcat: 'https://longcat.chat/platform/api_keys',
+  moonshot: 'https://platform.moonshot.cn/console/api-keys',
 };
 
 function createDefaultTextModelProfiles(): TextModelProfiles {

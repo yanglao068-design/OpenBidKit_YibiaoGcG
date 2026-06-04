@@ -2,16 +2,16 @@
   "name": "yibiao-client",
   "version": "0.1.0",
   "private": true,
-  "description": "易标投标工具箱独立桌面客户端",
+  "description": "宜标投标工具箱独立桌面客户端",
   "author": "mark",
   "main": "electron/main.cjs",
   "type": "module",
   "scripts": {
     "dev": "concurrently -k -n vite,electron -c blue,magenta \"vite --host 127.0.0.1 --port 5173 --strictPort\" \"wait-on http://127.0.0.1:5173 && cross-env ELECTRON_RENDERER_URL=http://127.0.0.1:5173 electron .\"",
     "build": "tsc --noEmit && vite build",
-    "dist": "npm run build && electron-builder",
-    "dist:win": "npm run build && electron-builder --win",
-    "dist:mac": "npm run build && electron-builder --mac",
+    "dist": "node -e \"require('fs').rmSync('release',{recursive:true,force:true})\" && npm run build && electron-builder",
+    "dist:win": "node -e \"require('fs').rmSync('release',{recursive:true,force:true})\" && npm run build && electron-builder --win",
+    "dist:mac": "node -e \"require('fs').rmSync('release',{recursive:true,force:true})\" && npm run build && electron-builder --mac",
     "postinstall": "electron-builder install-app-deps",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "smoke:electron-native": "electron scripts/electron-native-smoke.cjs",
@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "com.yibiao.openbidkit",
-    "productName": "易标投标工具箱",
+    "productName": "宜标投标工具箱",
     "copyright": "Copyright © 2026 mark",
     "asar": true,
     "directories": {
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "artifactName": "Yibiao-${version}-${os}-${arch}.${ext}"
+    "artifactName": "YibiaoKit-${version}-${os}-${arch}.${ext}"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
