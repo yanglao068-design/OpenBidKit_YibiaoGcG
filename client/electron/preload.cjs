@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 const bridge = {
-  appName: '宜标投标工具箱',
+  appName: '宜标投标',
   platform: process.platform,
   getVersion: () => ipcRenderer.invoke('app:get-version'),
   getLatestVersion: () => ipcRenderer.invoke('app:get-latest-version'),

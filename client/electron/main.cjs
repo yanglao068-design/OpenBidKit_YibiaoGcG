@@ -95,9 +95,13 @@ function createMainWindow() {
     minWidth: 1040,
     minHeight: 720,
     backgroundColor: '#f8fafd',
-    title: '宜标投标工具箱',
+    title: '宜标投标',
     icon: fs.existsSync(iconPath) ? iconPath : undefined,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
+    resizable: true,
+    minimizable: true,
+    maximizable: true,
+    fullscreenable: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -108,7 +112,7 @@ function createMainWindow() {
 
   mainWindow.setMenuBarVisibility(false);
 
-  if (rendererUrl) {
+  if (!app.isPackaged && rendererUrl) {
     mainWindow.loadURL(rendererUrl);
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));

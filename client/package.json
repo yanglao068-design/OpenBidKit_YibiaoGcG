@@ -2,7 +2,7 @@
   "name": "yibiao-client",
   "version": "0.1.0",
   "private": true,
-  "description": "宜标投标工具箱独立桌面客户端",
+  "description": "宜标投标独立桌面客户端",
   "author": "mark",
   "main": "electron/main.cjs",
   "type": "module",
@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "com.yibiao.openbidkit",
-    "productName": "宜标投标工具箱",
+    "productName": "宜标投标",
     "copyright": "Copyright © 2026 mark",
     "asar": true,
     "directories": {
@@ -34,8 +34,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "FB208",
-        "repo": "OpenBidKit_Yibiao",
+        "owner": "yanglao068-design",
+        "repo": "OpenBidKit_YibiaoGcG",
         "releaseType": "release"
       }
     ],
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "artifactName": "YibiaoKit-${version}-${os}-${arch}.${ext}"
+    "artifactName": "YibiaoBid-${version}-${os}-${arch}.${ext}"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

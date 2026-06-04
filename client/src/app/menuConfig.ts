@@ -1,11 +1,5 @@
 import type { AppMenuItem, SectionId } from '../shared/types/navigation';
 
-const githubStarNotice = {
-  message: '正在开发中，在github给作者点个star，可以加速开发。',
-  actionLabel: '点此直达',
-  externalUrl: 'https://github.com/FB208/OpenBidKit_Yibiao',
-};
-
 export const appMenuItems: AppMenuItem[] = [
   {
     id: 'bid-generation',
@@ -17,20 +11,6 @@ export const appMenuItems: AppMenuItem[] = [
         label: '生成技术方案',
         description: '根据招标文件重头编写一份标书',
         icon: 'document',
-      },
-      {
-        id: 'existing-plan-expansion',
-        label: '已有方案扩写',
-        description: '解决人写技术方案太薄的问题，上传写好的方案，进行优化和扩充，遵从原方案真实可落地，又能扩写出厚厚的标书',
-        icon: 'expand',
-        notice: githubStarNotice,
-      },
-      {
-        id: 'business-bid',
-        label: '商务标',
-        description: '整理商务响应、报价口径和合同偏离材料。',
-        icon: 'briefcase',
-        notice: githubStarNotice,
       },
     ],
   },
@@ -57,12 +37,6 @@ export const appMenuItems: AppMenuItem[] = [
         icon: 'shield',
       },
     ],
-  },
-  {
-    id: 'bid-opportunity',
-    label: '投标机会',
-    description: '机会发现与线索跟踪',
-    notice: githubStarNotice,
   },
 ];
 
