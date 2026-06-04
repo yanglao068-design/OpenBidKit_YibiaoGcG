@@ -1,6 +1,6 @@
-<img src="./screenshots/banner.webp" alt="易标使用演示视频" width="100%">
+<img src="./screenshots/banner.webp" alt="宜标使用演示视频" width="100%">
 
-# 易标投标工具箱 - AI智能标书写作助手
+# 宜标投标工具箱 - AI智能标书写作助手
 
 <p align="center">
   <strong>简体中文</strong> | <a href="./README.en.md">English</a>
@@ -21,7 +21,7 @@
 <p align="left">
   <strong>🚀 开箱即用-开源免费AI标书编写工具</strong>
   <br>
-  易标投标工具箱是一款面向招投标场景的智能标书制作工具，完全开源，包括AI生成技术方案、图文生成、商务标、企业知识库管理、标书查重、废标项检查、标讯等，更多功能还在开发中。
+  宜标投标工具箱是一款面向招投标场景的智能标书制作工具，完全开源，包括AI生成技术方案、图文生成、商务标、企业知识库管理、标书查重、废标项检查、标讯等，更多功能还在开发中。
   <br>
   支持OpenAI like模式的所有AI api，目前已深度适配DeepSeek、龙猫、火山方舟三个平台，也支持ollama、lm studio等接入本地模型。
   <br>
@@ -119,7 +119,7 @@
 ### 🎬 使用方式
 
 <a href="https://www.bilibili.com/video/BV1sC5i6SE74">
-  <img src="./screenshots/new_home.png" alt="易标使用演示视频" width="100%">
+  <img src="./screenshots/new_home.png" alt="宜标使用演示视频" width="100%">
 </a>
 
 [点击前往 Bilibili 观看使用演示视频](https://www.bilibili.com/video/BV1sC5i6SE74)
@@ -137,7 +137,7 @@
 ### 🏗️ 项目结构
 
 ```
-易标投标工具箱/
+宜标投标工具箱/
 ├── client/                    # 当前桌面客户端主体
 │   ├── electron/              # Main、Preload、IPC、本地服务
 │   ├── src/                   # Renderer 应用源码
