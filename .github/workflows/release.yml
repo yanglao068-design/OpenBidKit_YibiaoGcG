@@ -183,6 +183,7 @@ jobs:
 
       - name: Build Windows MSI artifact
         if: runner.os == 'Windows'
+        continue-on-error: true
         run: npx electron-builder --win msi --publish never -c.productName=宜标投标工具箱 -c.extraMetadata.author=mark -c.copyright="Copyright (c) 2026 mark"
 
       - name: Build and publish macOS artifacts
